@@ -3,20 +3,21 @@
      stages {
          stage('BUILD') {
              steps {
-                 sh 'npm run build'
+                sh 'npm install'
+                sh 'npm run build'
              }
          }
 
-         stage('STOP App') {
+         stage('remove') {
              steps {
-                 sh 'ssh root@nginx "rm -rf /root/nginx/front"'
+                sh 'ssh root@nginx "rm -rf /home/hitec/nginx/board"'
              }
          }
          
          stage('Deployment') {
-             steps {
-                 sh 'scp -r ./build root@nginx:/root/nginx/front'
-             }
+            steps {
+                sh 'scp -r ./build root@nginx:/home/hitec/nginx/board'
+            }
          }
      }
  }
