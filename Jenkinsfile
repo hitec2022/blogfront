@@ -7,16 +7,17 @@
                 sh 'CI=false npm run build'
              }
          }
-
+/*
          stage('remove') {
              steps {
                 sh 'ssh root@nginx "rm -rf /home/hitec/nginx/board"'
              }
          }
          
+*/
          stage('Deployment') {
             steps {
-                sh 'scp -r ./build root@nginx:/home/hitec/nginx/board'
+                sh 'docker cp hitec-jenkins-agent:./build/* /home/hitec/nginx/board'
             }
          }
      }
