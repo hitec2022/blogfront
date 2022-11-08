@@ -27,7 +27,7 @@
          }
          stage('Deployment') {
              steps {
-                 sh 'docker run -d --name hitec-front hitec-front:0.0.1'
+                 sh 'docker run -d -p 80:80 --name hitec-front hitec-front:0.0.1'
              }
          }
      }
