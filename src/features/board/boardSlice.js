@@ -9,19 +9,19 @@ const initialState = {
 }
 
 export const fetchBoardList = createAsyncThunk('board/boardList', async () => {
-    const response = await axios.get('http://192.168.56.1:8899/boards');
+    const response = await axios.get('http://192.168.56.1:8000/blogboard/boards');
     return response.data;
 })
 
 export const fetchBoard = createAsyncThunk('board/board', async (id) => {
-    const response = await axios.get('http://192.168.56.1:8899/board/'.concat(id));
+    const response = await axios.get('http://192.168.56.1:8000/blogboard/board/'.concat(id));
     return response.data;
 })
 
 export const addBoard = createAsyncThunk('board/addBoard', async (boardObj) => {
     const token = boardObj.token;
     const board = { title: boardObj.title, content: boardObj.content}
-    const response = await axios.post('http://192.168.56.1:8899/board', board, {
+    const response = await axios.post('http://192.168.56.1:8000/blogboard/board', board, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -33,7 +33,7 @@ export const addBoard = createAsyncThunk('board/addBoard', async (boardObj) => {
 export const editBoard = createAsyncThunk('board/editBoard', async (boardObj) => {
     const token = boardObj.token;
     const board = { id: boardObj.id, title: boardObj.title, content: boardObj.content}
-    const response = await axios.put('http://192.168.56.1:8899/board', board, {
+    const response = await axios.put('http://192.168.56.1:8000/blogboard/board', board, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
