@@ -19,7 +19,7 @@ export const BoardList = () => {
     return (
       <article className="excerpt" key={board.id}>
         <h3>제목 : {board.title}</h3>
-        <p className="content">글 : {board.content.substring(0, 100)}</p>
+        <p className="content">글 : {board.content.substring(0, 100)}</p>{board.userName}
 
         <Link to={`/board/${board.id}`} className="button muted-button">
           View Post
